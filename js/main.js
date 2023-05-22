@@ -1,21 +1,80 @@
 'use strict'
+const list = document.querySelector(".js-list");
+const kittenImageOne = 'https://dev.adalab.es/gato-siames.webp';
+const kittenNameOne = 'Anastacio'.toUpperCase();
+const kittenDescOne =
+  ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
+const kittenRaceOne = 'Siamés';
 
-const list = document.querySelector("js-list");
-const content = '<li class="card"><article><img class="card_img" src="https://dev.adalab.es/gato-siames.webp" alt="siames-cat"/><h3 class="card_title">Anastacio</h3><h4 class="card_race">Siamés</h4><p class="card_description">Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.</p></article></li><li class="card"><img class="card_img" src="https://dev.adalab.es/sphynx-gato.webp" alt="sphynx-cat"/><h3 class="card_title">Fiona</h3><h4 class="card_race">Sphynx</h4><p class="card_description">Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.</p></li><li class="card"><imgclass="card_img"src="https://dev.adalab.es/maine-coon-cat.webp" alt="maine-coon-cat"/><h3 class="card_title">Cielo</h3><h4 class="card_race">Maine Coon</h4><p class="card_description">Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.</p></li>';
-list.innerHTML = content;
+const kittenImageTwo = 'https://dev.adalab.es/sphynx-gato.webp';
+const kittenNameTwo = 'Fiona'.toUpperCase();
+const kittenDescTwo =
+  ' Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.';
+const kittenRaceTwo = 'Sphynx';
+
+
+const kittenImageThree = 'https://dev.adalab.es/maine-coon-cat.webp';
+const kittenNameThree = 'Cielo'.toUpperCase();
+const kittenDescThree =
+  ' Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
+const kittenRaceThree = 'Maine Coon';
+
+const elementOne = `
+<li class="card one">
+    <article>
+        <img class="card_img" src= ${kittenImageOne} alt="siames-cat"/>
+        <h3 class="card_title"> ${kittenNameOne}</h3>
+        <h4 class="card_race"> ${kittenRaceOne}</h4>
+        <p class="card_description"> ${kittenDescOne}</p>
+    </article>
+</li>`;
+const elementTwo = `
+<li class="card two"><img class="card_img" src=${kittenImageTwo} alt="sphynx-cat"/>
+    <h3 class="card_title">${kittenNameTwo}</h3>
+    <h4 class="card_race">${kittenRaceTwo}</h4>
+    <p class="card_description">${kittenDescTwo}</p>
+</li>`;
+const elementThree =`
+<li class="card three"><img class="card_img" src="${kittenImageThree}" alt="maine-coon-cat"/>
+    <h3 class="card_title">${kittenNameThree}</h3>
+    <h4 class="card_race">${kittenRaceThree}</h4>
+    <p class="card_description">${kittenDescThree}</p>
+</li>`;
+list.innerHTML = elementOne + elementTwo + elementThree;
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const descrSearchText = input_search_desc.value;
 
-if( kittenDesc1.includes(descrSearchText) ) {
-    //Completa el código
+
+if( kittenDescOne.includes(descrSearchText) ) {
+    list.innerHTML = elementOne
     }
     
-    if( kittenDesc2.includes(descrSearchText) ) {
-    //Completa el código
+    if( kittenDescTwo.includes(descrSearchText) ) {
+        list.innerHTML = elementTwo
     }
     
-    if( kittenDesc3.includes(descrSearchText) ) {
-    //Completa el código
+    if( kittenDescThree.includes(descrSearchText) ) {
+        list.innerHTML = elementThree
     }
-        ....
+
+
+    const input_search_race = document.querySelector('.js_in_search_race');
+    const razecrSearchText = input_search_raze.value;
+    
+    
+    if( kittenRaceOne.includes(raceSearchText) ) {
+        list.innerHTML = elementOne
+        }
+        
+        if( kittenRaceTwo.includes(raceSearchText) ) {
+            list.innerHTML = elementTwo
+        }
+        
+        if( kittenRacecThree.includes(raceSearchText) ) {
+            list.innerHTML = elementThree
+        } 
+        else {
+            list.innerHTML = `Uy que despiste, no sabemos su raza`
+        }  
+    
