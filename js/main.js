@@ -47,34 +47,55 @@ const descrSearchText = input_search_desc.value;
 
 
 if( kittenDescOne.includes(descrSearchText) ) {
-    list.innerHTML = elementOne
-    }
+    list.innerHTML += elementOne
+}
     
-    if( kittenDescTwo.includes(descrSearchText) ) {
-        list.innerHTML = elementTwo
-    }
+if( kittenDescTwo.includes(descrSearchText) ) {
+        list.innerHTML += elementTwo
+}
     
-    if( kittenDescThree.includes(descrSearchText) ) {
-        list.innerHTML = elementThree
-    }
+if( kittenDescThree.includes(descrSearchText) ) {
+        list.innerHTML += elementThree
+}
 
+const input_search_race = document.querySelector('.js_in_search_race');
+const raceSearchText = input_search_race.value;
+    
+if( kittenRaceOne.includes(raceSearchText) ) {
+    list.innerHTML += elementOne
+}
+        
+if( kittenRaceTwo.includes(raceSearchText) ) {
+    list.innerHTML += elementTwo
+}
+        
+if( kittenRaceThree.includes(raceSearchText) ) {
+        list.innerHTML += elementThree
+}   else {
+    list.innerHTML = `Uy que despiste, no sabemos su raza`
+} 
 
-    const input_search_race = document.querySelector('.js_in_search_race');
-    const razecrSearchText = input_search_raze.value;
-    
-    
-    if( kittenRaceOne.includes(raceSearchText) ) {
-        list.innerHTML = elementOne
-        }
-        
-        if( kittenRaceTwo.includes(raceSearchText) ) {
-            list.innerHTML = elementTwo
-        }
-        
-        if( kittenRacecThree.includes(raceSearchText) ) {
-            list.innerHTML = elementThree
-        } 
-        else {
-            list.innerHTML = `Uy que despiste, no sabemos su raza`
-        }  
-    
+const spanAdd = document.querySelector('.new');
+spanAdd.addEventListener('click', (event) => {
+    const form =document.querySelector('.new-form');
+    form.classList.toggle('collapsed');
+});
+const buttonCancel = document.querySelector('.js-btn-cancel');
+buttonCancel.addEventListener('click', (event) => {
+    const form =document.querySelector('.new-form');
+    form.classList.add('collapsed');
+});
+
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const labelMessageError = document.querySelector('.js-label-error');
+const button_add = document.querySelector(".js-btn-add");
+button_add.addEventListener('click', (event) => {
+    const valueDesc = inputDesc.value;
+    const valuePhoto = inputPhoto.value;
+    const valueName = inputName.value;  
+    if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+        labelMessageError.innerHTML = '¡Uy! parece que has olvidado algo.';
+    }
+});
