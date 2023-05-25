@@ -42,38 +42,26 @@ const elementThree =`
 </li>`;
 list.innerHTML = elementOne + elementTwo + elementThree;
 
+function filterKitten (event) { 
+    const descrSearchText = input_search_desc.value;
+    const raceSearchText = input_search_race.value; 
+    event.preventDefault();
+    console.log (descrSearchText,raceSearchText);
+    list.innerHTML="";
+    if( kittenDescOne.includes(descrSearchText) && kittenRaceOne.includes(raceSearchText)){
+        list.innerHTML += elementOne
+    }   
+    if( kittenDescTwo.includes(descrSearchText) && kittenRaceTwo.includes(raceSearchText)){
+            list.innerHTML += elementTwo
+    }   
+    if( kittenDescThree.includes(descrSearchText) && kittenRaceThree.includes(raceSearchText)){
+            list.innerHTML += elementThree
+    }
+}
+const input_search_race = document.querySelector('.js_in_search_race'); 
 const input_search_desc = document.querySelector('.js_in_search_desc');
-const descrSearchText = input_search_desc.value;
-
-
-if( kittenDescOne.includes(descrSearchText) ) {
-    list.innerHTML += elementOne
-}
-    
-if( kittenDescTwo.includes(descrSearchText) ) {
-        list.innerHTML += elementTwo
-}
-    
-if( kittenDescThree.includes(descrSearchText) ) {
-        list.innerHTML += elementThree
-}
-
-const input_search_race = document.querySelector('.js_in_search_race');
-const raceSearchText = input_search_race.value;
-    
-if( kittenRaceOne.includes(raceSearchText) ) {
-    list.innerHTML += elementOne
-}
-        
-if( kittenRaceTwo.includes(raceSearchText) ) {
-    list.innerHTML += elementTwo
-}
-        
-if( kittenRaceThree.includes(raceSearchText) ) {
-        list.innerHTML += elementThree
-}   else {
-    list.innerHTML = `Uy que despiste, no sabemos su raza`
-} 
+const buttonSearch = document.querySelector('.js-button-search');
+buttonSearch.addEventListener('click', filterKitten);
 
 const spanAdd = document.querySelector('.new');
 spanAdd.addEventListener('click', (event) => {
