@@ -64,26 +64,56 @@ const buttonSearch = document.querySelector('.js-button-search');
 buttonSearch.addEventListener('click', filterKitten);
 
 const spanAdd = document.querySelector('.new');
-spanAdd.addEventListener('click', (event) => {
-    const form =document.querySelector('.new-form');
-    form.classList.toggle('collapsed');
-});
+
+function handleClickNewCatForm(event) {
+    event.preventDefault(); 
+    /*const form =document.querySelector('.new-form');
+    form.classList.toggle('collapsed');*/ /*otra manera de hacerlo*/
+    if (form.classList.contains('collapsed')) {
+        form.classList.remove('collapsed');
+    } else {
+        form.classList.add('collapsed');
+    }
+  }
+
+spanAdd.addEventListener('click', handleClickNewCatForm);
+
+function handleButtonCancel(event) {
+    event.preventDefault(); 
+    form.classList.add('collapsed')
+  }
+
+
 const buttonCancel = document.querySelector('.js-btn-cancel');
-buttonCancel.addEventListener('click', (event) => {
-    const form =document.querySelector('.new-form');
-    form.classList.add('collapsed');
-});
+buttonCancel.addEventListener('click', handleButtonCancel);
+
 
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
 const labelMessageError = document.querySelector('.js-label-error');
 const button_add = document.querySelector(".js-btn-add");
-button_add.addEventListener('click', (event) => {
+const inputRace = document.querySelector('.js-input-race');
+
+
+function addNewKitten(event) {
     const valueDesc = inputDesc.value;
     const valuePhoto = inputPhoto.value;
-    const valueName = inputName.value;  
+    const valueName = inputName.value;
+    const valueRace = inputRace.value; 
     if (valueDesc === '' || valuePhoto === '' || valueName === '') {
         labelMessageError.innerHTML = '¡Uy! parece que has olvidado algo.';
     }
-});
+    else {
+        list.innerHTML(` 
+        <li class="card one">
+        <article>
+            <img class="card_img" src= ${valuePhoto} alt="siames-cat"/>
+            <h3 class="card_title"> ${valueName}</h3>
+            <h4 class="card_race"> ${valueRace}</h4>
+            <p class="card_description"> ${valueDesc}</p>
+        </article>
+    </li>`)
+  }
+}
+button_add.addEventListener('click', addNewKitten);
