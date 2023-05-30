@@ -20,19 +20,24 @@ const kittenDataList = [
         race: 'Maine Coon',
     }
 ];
+
+function renderKittenList (kittenDataList) { 
+    for (let i = 0; i < kittenDataList.length; i++) {
+        const element = `
+            <li class="card one">
+                <article>
+                    <img class="card_img" src= ${kittenDataList[i].image}     alt="siames-cat"/>
+                    <h3 class="card_title"> ${kittenDataList[i].name}</h3>
+                    <h4 class="card_race"> ${kittenDataList[i].race}</h4>
+                    <p class="card_description"> ${kittenDataList[i].desc}</p>
+                </article>
+            </li>`;
+        list.innerHTML+= element;
+    }
+} 
+renderKittenList(kittenDataList);
+
 /*
-function renderKitten (kittenDataList[0]) {
-    
-}*/
-const elementOne = `
-<li class="card one">
-    <article>
-        <img class="card_img" src= ${kittenDataList[0].image} alt="siames-cat"/>
-        <h3 class="card_title"> ${kittenDataList[0].name}</h3>
-        <h4 class="card_race"> ${kittenDataList[0].race}</h4>
-        <p class="card_description"> ${kittenDataList[0].desc}</p>
-    </article>
-</li>`;
 const elementTwo = `
 <li class="card two"><img class="card_img" src=${kittenDataList[1].image} alt="sphynx-cat"/>
     <h3 class="card_title">${kittenDataList[1].name}</h3>
@@ -45,7 +50,25 @@ const elementThree =`
     <h4 class="card_race">${kittenDataList[2].race}</h4>
     <p class="card_description">${kittenDataList[2].desc}</p>
 </li>`;
-list.innerHTML = elementOne + elementTwo + elementThree;
+/*
+list.innerHTML = elementOne + elementTwo + elementThree;*/
+function filterKitten (kittenDataList) { 
+    const descrSearchText = input_search_desc.value;
+    const raceSearchText = input_search_race.value;
+    event.preventDefault();
+    list.innerHTML="";
+    for (let i = 0; i < kittenDataList.length; i++) {
+        if( kittenDataList[i].desc.includes(descrSearchText) && kittenDataList[i].race.includes(raceSearchText)){
+            list.innerHTML += kittenDataList[i]
+        //Completa el código
+        //Comprueba si cada gatito contiene la descripción
+        //Si la contiene pintamos un gatito
+        //utilizando la función renderKitten(kittenItem)
+        }
+    }
+}
+
+/*
 function filterKitten (event) { 
     const descrSearchText = input_search_desc.value;
     const raceSearchText = input_search_race.value; 
@@ -60,7 +83,7 @@ function filterKitten (event) {
     if( kittenDataList[2].desc.includes(descrSearchText) && kittenDataList[2].race.includes(raceSearchText)){
             list.innerHTML += elementThree
     }
-}
+}*/
 const input_search_race = document.querySelector('.js_in_search_race'); 
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const buttonSearch = document.querySelector('.js-button-search');
@@ -70,7 +93,7 @@ function renderRace (event) {
     if (raceSearchText===''){
         list.innerHTML = "Uy que despiste, no sabemos su raza";
     }else {
-        filterKitten(event);
+        filterKitten(kittenDataList);
     }
 }
 buttonSearch.addEventListener('click', renderRace);
